@@ -1,0 +1,16 @@
+@use 'normalize';
+@use 'fonts';
+@use 'variables';
+@use 'utils';
+@use 'globals';
+
+@use './blocks/logo';
+@use './blocks/button';
+@use './blocks/burger-button';
+@use './blocks/dark-theme';
+@use './blocks/modal';
+@use './blocks/form';
+@use './blocks/header';
+@use './blocks/hero';
+@use './blocks/section';
+@use './blocks/footer';

@@ -1,0 +1,83 @@
+@use '../helpers' as *;
+
+.header {
+    &__body {
+        padding: rem(8) rem(15);
+
+        &-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            column-gap: 1rem;
+        }
+    }
+
+    &__overlay {
+        @include mobile-above {
+            display: contents;
+        }
+
+        @include mobile {
+            position: fixed;
+            inset: 0;
+            background-color: var(--color-accent);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            row-gap: 3rem;
+            padding: 1rem;
+            transition-duration: var(--transition-duration);
+            z-index: 3;
+
+            &:not(.is-active) {
+                @include hide;
+
+                translate: 100%;
+            }
+        }
+    }
+
+    &__menu {
+        @include mobile {
+            overflow-y: auto;
+        }
+        
+        &-list {
+            display: flex;
+            align-items: center;
+            column-gap: rem(16);
+
+            @include laptop {
+                column-gap: rem(8);
+            }
+
+            @include mobile {
+                flex-direction: column;
+                row-gap: 1rem;
+            }
+        }
+
+        &-link {
+            padding-inline: rem(20);
+            font-weight: 400;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        column-gap: rem(8);
+
+        @include mobile {
+            justify-content: center;
+            flex-direction: column-reverse;
+            row-gap: rem(20);
+        }
+    }
+
+    &__switch-theme {
+        max-width: 100%;
+        border: none;
+        background-color: inherit;
+    }
+}

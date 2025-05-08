@@ -1,0 +1,29 @@
+@use '../helpers' as *;
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+
+    @include tablet {
+        padding-block: rem(30);
+    }
+
+    &-inner {
+        display: flex;
+
+        @include tablet {
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__title {
+        padding-bottom: rem(20);
+    }
+
+    &__image {
+        border-radius: rem(15);
+    }
+}

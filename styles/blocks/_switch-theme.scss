@@ -1,0 +1,7 @@
+@use '../helpers' as *;
+
+.swithc-theme__icon {
+    @include mobile {
+        fill: var(--color-light);
+    }
+}
