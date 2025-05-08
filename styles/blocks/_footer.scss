@@ -1,0 +1,31 @@
+@use '../helpers' as *;
+
+.footer {
+    background-color: var(--color-accent);
+
+    &-inner {
+        display: flex;
+        row-gap: rem(50);
+        flex-direction: column;
+        align-items: flex-start;
+        padding-block: rem(50);
+    }
+
+    &__menu {
+        &-list {
+            display: flex;
+            flex-direction: column;
+            row-gap: rem(15);
+        }
+
+        &-link {
+            color: var(--color-light);
+            font-weight: 700;
+
+            @include hover {
+                color: var(--color-light);
+                text-decoration: underline;
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+@use '../helpers' as *;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #333;
+    }
+
+    &__control {
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        transition: border-color 0.2s;
+
+        &:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+    }
+
+    &__errors {
+        color: #d00;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        min-height: 1em;
+    }
+}
