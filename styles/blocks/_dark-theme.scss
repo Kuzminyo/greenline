@@ -2,9 +2,10 @@
 
 html {
     &.is-dark-theme {
+        background-color: #1e1b14;
+
         body {
-            background-color: var(--color-dark);
-            color: var(--color-light);
+            color: var(--color-cream);
         }
 
         h1,
@@ -13,16 +14,34 @@ html {
         h4,
         h5,
         h6 {
-            color: var(--color-light);
+            color: var(--color-cream);
         }
 
         .button {
-            background-color: #141b24;
-            color: var(--color-light);
+            background-color: #2a2620;
+            color: var(--color-cream);
 
             @include hover {
-                background-color: #11161e;
+                background-color: #332e26;
                 color: var(--color-accent);
+            }
+        }
+
+        .header__menu-link {
+            color: var(--color-cream);
+
+            @include hover {
+                color: var(--color-accent);
+            }
+        }
+
+        .header__contacts-button,
+        .modal__button {
+            color: var(--color-light);
+            background-color: var(--color-accent);
+
+            @include hover {
+                background-color: var(--color-accent-deep);
             }
         }
 
@@ -31,7 +50,45 @@ html {
         }
 
         .burger-button__line {
-            background-color: var(--color-light);
+            background-color: var(--color-cream);
+        }
+
+        .section__main {
+            color: var(--color-cream);
+        }
+
+        .products {
+            background-color: #171510;
+        }
+
+        .product-card__link {
+            background-color: #2a2620;
+
+            @include hover {
+                color: var(--color-cream);
+            }
+        }
+
+        .product-card__title {
+            color: var(--color-cream);
+        }
+
+        .product-card__text {
+            color: #b8ae9c;
+        }
+
+        .modal__content {
+            background-color: #2a2620;
+        }
+
+        .field__label {
+            color: var(--color-cream);
+        }
+
+        .field__control {
+            color: var(--color-cream);
+            background-color: #1e1b14;
+            border-color: #3a352b;
         }
     }
 }

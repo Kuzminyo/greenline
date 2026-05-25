@@ -3,12 +3,23 @@
 :root {
     --color-light: #ffffff;
 
-    --color-dark: #1f2937;
-    --color-gray: #a6adbb;
+    --color-cream: #faf6ee;
+    --color-cream-deep: #f1e8d6;
 
-    --color-accent: #25A25A;
+    --color-dark: #2e2a20;
+    --color-gray: #8c8273;
+
+    // Пшенично-золотий — основний акцент
+    --color-accent: #b8893b;
+    --color-accent-deep: #9a6f2c;
+    // Природна зелень — другорядний акцент
+    --color-green: #4f7a3a;
+
+    --border-soft: #e4dac4;
+    --shadow-warm: 0 #{rem(14)} #{rem(40)} rgba(46, 42, 32, 0.1);
 
     --font-family-base: "Roboto", sans-serif;
+    --font-family-accent: "Playfair Display", "Georgia", serif;
 
     --container-width: #{rem(1400)};
     --container-padding-x: #{rem(16)};

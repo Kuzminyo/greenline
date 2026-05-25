@@ -20,7 +20,7 @@
         @include mobile {
             position: fixed;
             inset: 0;
-            background-color: var(--color-accent);
+            background-color: var(--color-green);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -57,21 +57,46 @@
             }
         }
 
+        // Перевизначаємо стиль .button: у шапці посилання — це текстові пункти меню
         &-link {
-            padding-inline: rem(20);
-            font-weight: 400;
+            padding: rem(8) rem(14);
+            font-weight: 500;
+            color: var(--color-dark);
+            background-color: transparent;
+            border-radius: rem(8);
+
+            @include hover {
+                background-color: transparent;
+                color: var(--color-accent);
+            }
+
+            @include mobile {
+                color: var(--color-light);
+                font-size: rem(20);
+            }
         }
     }
 
     &__actions {
         display: flex;
         align-items: center;
-        column-gap: rem(8);
+        column-gap: rem(12);
 
         @include mobile {
             justify-content: center;
             flex-direction: column-reverse;
             row-gap: rem(20);
+        }
+    }
+
+    // Головна кнопка-заклик — золотий акцент
+    &__contacts-button {
+        color: var(--color-light);
+        background-color: var(--color-accent);
+
+        @include hover {
+            color: var(--color-light);
+            background-color: var(--color-accent-deep);
         }
     }
 

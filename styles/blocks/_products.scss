@@ -1,0 +1,101 @@
+@use '../helpers' as *;
+
+.products {
+    background-color: var(--color-cream-deep);
+    padding-block: rem(96);
+
+    @include tablet {
+        padding-block: rem(64);
+    }
+
+    &__title {
+        text-align: center;
+    }
+
+    &__subtitle {
+        margin-top: rem(16);
+        margin-inline: auto;
+        max-width: rem(620);
+        text-align: center;
+        color: var(--color-gray);
+        font-size: rem(18);
+    }
+
+    &__list {
+        margin-top: rem(56);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(rem(240), 1fr));
+        gap: rem(30);
+    }
+}
+
+.product-card {
+    &__link {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: var(--color-light);
+        border-radius: rem(20);
+        overflow: hidden;
+        box-shadow: var(--shadow-warm);
+        transition-property: translate, box-shadow;
+        transition-duration: var(--transition-duration);
+
+        @include hover {
+            translate: 0 rem(-8);
+            box-shadow: 0 #{rem(22)} #{rem(50)} rgba(46, 42, 32, 0.18);
+            color: var(--color-dark);
+        }
+    }
+
+    &__image {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        row-gap: rem(10);
+        padding: rem(24);
+    }
+
+    &__title {
+        font-family: var(--font-family-accent);
+        font-weight: 600;
+        font-size: rem(24);
+        color: var(--color-dark);
+    }
+
+    &__text {
+        flex-grow: 1;
+        color: var(--color-gray);
+        font-size: rem(15);
+        line-height: 1.6;
+    }
+
+    &__more {
+        display: inline-flex;
+        align-items: center;
+        column-gap: rem(8);
+        margin-top: rem(6);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: rem(13);
+        color: var(--color-accent);
+
+        &::after {
+            content: "\2192";
+            transition-duration: var(--transition-duration);
+        }
+    }
+
+    @include hover {
+        .product-card__more::after {
+            translate: rem(6) 0;
+        }
+    }
+}

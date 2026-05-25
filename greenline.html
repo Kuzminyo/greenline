@@ -6,7 +6,11 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Greenline | О нас</title>
+    <title>Green line | О нас</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap">
     <link rel="stylesheet" href="./styles/main.css">
     <script src="./scripts/main.js" type="module"></script>
 </head>
@@ -26,7 +30,7 @@
                                 <a href="./pshono.html" class="header__menu-link button">Пшоно</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="./goroh.html" class="header__menu-link button">Горох</a>
+                                <a href="./goroh.html" class="header__menu-link button">Перлова</a>
                             </li>
                             <li class="header__menu-item">
                                 <a href="./yachna.html" class="header__menu-link button">Ячна</a>
@@ -62,7 +66,7 @@
             <div class="hero__main container">
                 <div class="hero__body">
                     <p class="hero__subtitle">Українська продовольча компанія</p>
-                    <h1 class="hero__title" id="hero-title">ГРІНЛАЙН</h1>
+                    <h1 class="hero__title" id="hero-title">ГРІН ЛАЙН</h1>
                     <div class="hero__description">
                         <p>Ми займаємось оптовою торгівлею крупами зернових та бобових культур,
                             надаючи нашим клієнтам найкращі продукти для їх бізнесу</p>
@@ -79,11 +83,11 @@
                         <p>Вітаємо на нашому сайті, де ми запрошуємо вас відкрити для себе великий асортимент круп
                             високої
                             якості. Наша компанія спеціалізується на оптовій торгівлі пшеницею, ячмінною крупою та
-                            горохом,
-                            вівсянтми пластівцями, надаючи нашим клієнтам найкращі продукти для їх бізнесу.</p>
+                            перловкою,
+                            вівсяними пластівцями, надаючи нашим клієнтам найкращі продукти для їх бізнесу.</p>
                         <p>Завдяки ретельному відбору постачальників і власній системі контролю якості, ми можемо
                             гарантувати, що наші крупи відповідають найвищим стандартам безпеки та смаку. Ми пропонуємо
-                            різноманітні види круп – від класичної пшениці до смачного гороху, враховуючи різні потреби
+                            різноманітні види круп – від класичної пшениці до смачної перлової крупи, враховуючи різні потреби
                             наших клієнтів.</p>
                         <p>Наша оптова торгівля дозволяє підприємствам отримати доступ до великих обсягів продукції за
                             конкурентоспроможними цінами. Ми гордимося тим, що можемо забезпечити наших клієнтів
@@ -112,7 +116,7 @@
                         <a href="./pshono.html" class="footer__menu-link">Пшоно</a>
                     </li>
                     <li class="footer__menu-item">
-                        <a href="./gorog.html" class="footer__menu-link">Горох</a>
+                        <a href="./goroh.html" class="footer__menu-link">Перлова</a>
                     </li>
                     <li class="footer__menu-item">
                         <a href="./yachna.html" class="footer__menu-link">Ячна</a>
@@ -151,5 +155,71 @@
             </form>
         </div>
     </div>
+
+</body>
+
+<script>
+    // Скрипт для отправки формы на почту
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('[data-js-form]');
+
+        if (form) {
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // Получаем данные из формы
+                const formData = new FormData(form);
+                const name = formData.get('name');
+                const number = formData.get('number');
+
+                // Базовая валидация
+                if (!name || !number) {
+                    alert('Пожалуйста, заполните все поля');
+                    return;
+                }
+
+                // Подготовка данных для отправки
+                const data = {
+                    _subject: 'Новый заказ звонка с сайта Greenline',
+                    'Имя': name,
+                    'Номер телефона': number,
+                    'Дата запроса': new Date().toLocaleString('ru-RU'),
+                    'Страница': window.location.href
+                };
+
+                try {
+                    // ВАЖНО: Замени YOUR_EMAIL@example.com на свою реальную почту!
+                    const response = await fetch('https://formsubmit.co/ajax/506070123@ukr.net', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        // Успешная отправка
+                        alert('Спасибо! Ваш заказ принят. Мы свяжемся с вами в ближайшее время.');
+                        form.reset();
+
+                        // Закрываем модальное окно
+                        const closeButton = document.querySelector('[data-js-close-modal]');
+                        if (closeButton) {
+                            closeButton.click();
+                        }
+                    } else {
+                        throw new Error('Ошибка отправки');
+                    }
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    alert('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или свяжитесь с нами по телефону.');
+                }
+            });
+        }
+    });
+</script>
 
 </body>

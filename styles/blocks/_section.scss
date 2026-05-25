@@ -6,24 +6,59 @@
     align-items: center;
 
     @include tablet {
-        padding-block: rem(30);
+        padding-block: rem(60);
     }
 
     &-inner {
         display: flex;
+        align-items: center;
+        column-gap: rem(64);
 
         @include tablet {
             flex-direction: column-reverse;
             justify-content: center;
             align-items: center;
+            row-gap: rem(36);
         }
     }
 
+    &__body {
+        flex: 1 1 0;
+    }
+
     &__title {
-        padding-bottom: rem(20);
+        position: relative;
+        margin-bottom: rem(28);
+        padding-top: rem(20);
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: rem(64);
+            height: rem(4);
+            background-color: var(--color-accent);
+            border-radius: rem(999);
+        }
+    }
+
+    &__main {
+        color: var(--color-dark);
+        max-width: rem(680);
     }
 
     &__image {
-        border-radius: rem(15);
+        flex-shrink: 0;
+        width: rem(420);
+        max-width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: rem(20);
+        box-shadow: var(--shadow-warm);
+
+        @include tablet {
+            width: rem(340);
+        }
     }
 }
