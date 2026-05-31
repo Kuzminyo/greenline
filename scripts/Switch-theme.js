@@ -21,7 +21,8 @@ class ThemeSwitcher {
     }
 
     get isDarkThemeCached() {
-        return localStorage.getItem(this.storageKey) === this.themes.dark
+        // Тёмна тема — за замовчуванням: світла лише якщо користувач її явно обрав
+        return localStorage.getItem(this.storageKey) !== this.themes.light
     }
 
     setInitialTheme() {

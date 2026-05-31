@@ -14,19 +14,35 @@
     --color-accent-deep: #9a6f2c;
     // Природна зелень — другорядний акцент
     --color-green: #4f7a3a;
+    // Глибокий теплий «еспресо» — для футера й мобільного меню
+    --color-footer: #2a251c;
 
     --border-soft: #e4dac4;
-    --shadow-warm: 0 #{rem(14)} #{rem(40)} rgba(46, 42, 32, 0.1);
 
-    --font-family-base: "Roboto", sans-serif;
+    --shadow-sm: 0 #{rem(2)} #{rem(10)} rgba(46, 42, 32, 0.06);
+    --shadow-warm: 0 #{rem(14)} #{rem(40)} rgba(46, 42, 32, 0.1);
+    --shadow-lg: 0 #{rem(28)} #{rem(60)} rgba(46, 42, 32, 0.16);
+
+    --radius-sm: #{rem(12)};
+    --radius: #{rem(20)};
+    --radius-lg: #{rem(28)};
+
+    --font-family-base: "Mulish", "Segoe UI", system-ui, sans-serif;
     --font-family-accent: "Playfair Display", "Georgia", serif;
 
     --container-width: #{rem(1400)};
-    --container-padding-x: #{rem(16)};
+    --container-padding-x: #{rem(24)};
+    --header-height: #{rem(76)};
 
     --transition-duration: 0.2s;
+    --transition-smooth: 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
 
     @include laptop {
         --container-width: #{rem(1280)};
+    }
+
+    @include mobile {
+        --container-padding-x: #{rem(16)};
+        --header-height: #{rem(64)};
     }
 }

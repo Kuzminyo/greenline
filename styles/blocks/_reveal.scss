@@ -1,0 +1,55 @@
+@use '../helpers' as *;
+
+// Плавна поява під час прокручування. Клас .reveal додає JS і лише тоді,
+// коли користувач НЕ обрав "зменшити рух" — тож без JS контент видимий.
+.reveal {
+    opacity: 0;
+    transform: translateY(rem(28));
+    transition-property: opacity, transform;
+    transition-duration: 0.7s;
+    transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+    &.is-visible {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+// М'який каскад усередині секції «Про нас» / опису продукту
+.section__main.reveal {
+    transition-delay: 0.1s;
+}
+
+.section__image.reveal {
+    transition-delay: 0.18s;
+}
+
+.products__subtitle.reveal {
+    transition-delay: 0.08s;
+}
+
+// Стаґер карток продукції
+.product-card:nth-child(2).reveal {
+    transition-delay: 0.08s;
+}
+
+.product-card:nth-child(3).reveal {
+    transition-delay: 0.16s;
+}
+
+.product-card:nth-child(4).reveal {
+    transition-delay: 0.24s;
+}
+
+.product-card:nth-child(5).reveal {
+    transition-delay: 0.32s;
+}
+
+// Підстраховка: якщо клас усе ж потрапив на сторінку — показуємо без руху
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}

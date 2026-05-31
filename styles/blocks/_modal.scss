@@ -2,43 +2,49 @@
 
 .modal {
     position: fixed;
-    z-index: 4;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    z-index: 20;
+    inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.4);
+    padding: rem(20);
+    background-color: rgba(30, 27, 20, 0.55);
+    backdrop-filter: blur(rem(6));
+    transition: opacity var(--transition-duration);
 
     &:not(.is-active) {
         @include hide;
 
-        translate: 100%;
-    }
-
-    &__content {
-        background-color: var(--color-cream);
-        margin: auto;
-        padding: rem(28);
-        border-radius: rem(20);
-        box-shadow: var(--shadow-warm);
-        width: 35%;
-
-        @include mobile {
-            width: 70%;
+        .modal__content {
+            translate: 0 rem(16);
+            scale: 0.97;
         }
     }
 
+    &__content {
+        position: relative;
+        width: min(rem(440), 100%);
+        padding: clamp(rem(24), 4vw, rem(36));
+        background-color: var(--color-cream);
+        border: rem(1) solid var(--border-soft);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        transition-property: translate, scale;
+        transition-duration: var(--transition-duration);
+    }
+
     &__close-button {
+        position: absolute;
+        top: rem(12);
+        right: rem(16);
+        display: inline-flex;
         background-color: transparent;
-        float: right;
         border: none;
 
         &-cross {
             color: var(--color-gray);
-            font-size: rem(28);
+            font-size: rem(30);
+            line-height: 1;
             font-weight: 700;
             transition-duration: var(--transition-duration);
 
@@ -55,10 +61,14 @@
         margin-top: rem(8);
         color: var(--color-light);
         background-color: var(--color-accent);
+        box-shadow: 0 rem(6) rem(16) rgba(184, 137, 59, 0.3);
+        transition-property: background-color, color, translate, box-shadow;
 
         @include hover {
             color: var(--color-light);
             background-color: var(--color-accent-deep);
+            translate: 0 rem(-2);
+            box-shadow: 0 rem(10) rem(22) rgba(184, 137, 59, 0.38);
         }
     }
 }

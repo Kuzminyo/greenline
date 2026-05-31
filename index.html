@@ -3,14 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
+    <script>try{if(localStorage.getItem('theme')!=='light')document.documentElement.classList.add('is-dark-theme')}catch(e){document.documentElement.classList.add('is-dark-theme')}</script>
     <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Greenline | О нас</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap">
     <link rel="stylesheet" href="./styles/main.css">
     <script src="./scripts/main.js" type="module"></script>
 </head>
@@ -30,13 +31,13 @@
                                 <a href="./pshono.html" class="header__menu-link button">Пшоно</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="./goroh.html" class="header__menu-link button">Перлова</a>
+                                <a href="./perlova.html" class="header__menu-link button">Крупа перлова</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="./yachna.html" class="header__menu-link button">Ячна</a>
+                                <a href="./yachna.html" class="header__menu-link button">Крупа ячна</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="./pshenycna.html" class="header__menu-link button">Пшенична</a>
+                                <a href="./pshenycna.html" class="header__menu-link button">Крупа пшенична</a>
                             </li>
                             <li class="header__menu-item">
                                 <a href="./oves.html" class="header__menu-link button">Вівсянка</a>
@@ -101,8 +102,7 @@
                             вашого бізнесу.</p>
                     </div>
                 </div>
-                <img src="./images/about-us/1.jpg" alt="" class="section__image" width="384" height="384"
-                    loading="lazy">
+                <div class="section__image harvest" data-js-harvest aria-hidden="true"></div>
             </div>
         </section>
 
@@ -140,7 +140,7 @@
                             <img class="product-card__image" src="./images/yachna/1.jpg" alt="Ячна" width="384"
                                 height="288" loading="lazy">
                             <span class="product-card__body">
-                                <span class="product-card__title">Ячна</span>
+                                <span class="product-card__title">Крупа ячна</span>
                                 <span class="product-card__text">Ячмінна крупа з повільними вуглеводами та м'яким,
                                     природним смаком.</span>
                                 <span class="product-card__more">Докладніше</span>
@@ -152,7 +152,7 @@
                             <img class="product-card__image" src="./images/pshenycna/1.jpg" alt="Пшенична" width="384"
                                 height="288" loading="lazy">
                             <span class="product-card__body">
-                                <span class="product-card__title">Пшенична</span>
+                                <span class="product-card__title">Крупа пшенична</span>
                                 <span class="product-card__text">Класична пшенична крупа для каш, гарнірів та
                                     випічки.</span>
                                 <span class="product-card__more">Докладніше</span>
@@ -185,13 +185,13 @@
                         <a href="./pshono.html" class="footer__menu-link">Пшоно</a>
                     </li>
                     <li class="footer__menu-item">
-                        <a href="./goroh.html" class="footer__menu-link">Перлова</a>
+                        <a href="./perlova.html" class="footer__menu-link">Крупа перлова</a>
                     </li>
                     <li class="footer__menu-item">
-                        <a href="./yachna.html" class="footer__menu-link">Ячна</a>
+                        <a href="./yachna.html" class="footer__menu-link">Крупа ячна</a>
                     </li>
                     <li class="footer__menu-item">
-                        <a href="./pshenycna.html" class="footer__menu-link">Пшенична</a>
+                        <a href="./pshenycna.html" class="footer__menu-link">Крупа пшенична</a>
                     </li>
                     <li class="footer__menu-item">
                         <a href="./oves.html" class="footer__menu-link">Вівсянка</a>

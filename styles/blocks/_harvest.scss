@@ -1,0 +1,228 @@
+@use '../helpers' as *;
+
+// Сцена «комбайн збирає врожай» — лише контур, без фону й заливок.
+// Колір лінії = currentColor, тому автоматично підлаштовується під тему.
+.harvest {
+    // Ландшафтний формат, щоб комбайн був по центру й не тонув у квадраті
+    aspect-ratio: 2 / 1;
+    width: 100%;
+    max-width: rem(560);
+    overflow: hidden;
+    padding: clamp(rem(22), 3vw, rem(40));
+    color: var(--color-accent);
+    background:
+        repeating-linear-gradient(
+            to right,
+            transparent 0,
+            transparent rem(22),
+            rgba(184, 137, 59, 0.05) rem(22),
+            rgba(184, 137, 59, 0.05) rem(23)
+        ),
+        radial-gradient(130% 120% at 50% 0%, var(--color-light), var(--color-cream-deep) 85%);
+    border: rem(1) solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-warm);
+
+    @include tablet {
+        margin-inline: auto;
+    }
+
+    &__scene {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+}
+
+// Тонші лінії для дрібних деталей колоска
+.hv-stalk ellipse {
+    stroke-width: 1.6;
+}
+
+// Поле
+.hv-stubble {
+    stroke-width: 1.5;
+}
+
+.hv-furrow {
+    opacity: 0.4;
+}
+
+.hv-stalk-sway {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: hv-sway 4s ease-in-out infinite;
+}
+
+.hv-stalk-cut {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: hv-cut 11s linear infinite;
+}
+
+.hv-combine {
+    animation: hv-drive 11s linear infinite;
+}
+
+.hv-reel,
+.hv-wheelspin {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: hv-spin 1.6s linear infinite;
+}
+
+.hv-puff {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: hv-puff 2.4s ease-out infinite;
+}
+
+@keyframes hv-drive {
+    0% {
+        transform: translateX(360px);
+    }
+
+    80% {
+        transform: translateX(-300px);
+    }
+
+    100% {
+        transform: translateX(-300px);
+    }
+}
+
+@keyframes hv-sway {
+    0%,
+    100% {
+        transform: rotate(-4deg);
+    }
+
+    50% {
+        transform: rotate(4deg);
+    }
+}
+
+@keyframes hv-cut {
+    0%,
+    7% {
+        transform: scaleY(1);
+    }
+
+    11%,
+    88% {
+        transform: scaleY(0.12);
+    }
+
+    94%,
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes hv-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes hv-puff {
+    0% {
+        opacity: 0.7;
+        transform: translateY(0) scale(0.6);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-24px) scale(1.4);
+    }
+}
+
+// ── Анімації сцен виробництва (фура, елеватор, млин, мішки, конвеєр) ──
+
+// Зерно — заповнені крапки (а не контур)
+.hv-grain {
+    fill: currentColor;
+    stroke: none;
+}
+
+// Потік зерна, що сиплеться (drop задається інлайн на кожній крапці)
+.hv-pour .hv-grain {
+    transform-box: fill-box;
+    animation-name: hv-drop;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes hv-drop {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    82% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(var(--drop, 30px));
+        opacity: 0.15;
+    }
+}
+
+// Рух по конвеєру
+.hv-convey {
+    transform-box: fill-box;
+    animation: hv-convey 4.2s linear infinite;
+}
+
+@keyframes hv-convey {
+    0% {
+        transform: translateX(78px);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    86% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(282px);
+        opacity: 0.2;
+    }
+}
+
+// Легке погойдування (фура під час завантаження, мішок)
+.hv-bob {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: hv-bob 3.4s ease-in-out infinite;
+}
+
+@keyframes hv-bob {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+// Зустрічне обертання другого вальця млина
+.hv-reel--rev {
+    animation-direction: reverse;
+}

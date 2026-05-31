@@ -2,56 +2,80 @@
 
 .products {
     background-color: var(--color-cream-deep);
-    padding-block: rem(96);
-
-    @include tablet {
-        padding-block: rem(64);
-    }
+    padding-block: clamp(rem(72), 10vw, rem(120));
 
     &__title {
+        position: relative;
         text-align: center;
+        padding-bottom: rem(24);
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            translate: -50% 0;
+            width: rem(72);
+            height: rem(3);
+            background-color: var(--color-accent);
+            border-radius: rem(999);
+        }
     }
 
     &__subtitle {
-        margin-top: rem(16);
+        margin-top: rem(20);
         margin-inline: auto;
-        max-width: rem(620);
+        max-width: rem(640);
         text-align: center;
-        color: var(--color-gray);
-        font-size: rem(18);
+        color: rgba(46, 42, 32, 0.85);
+        font-size: rem(19);
+        font-weight: 500;
+        line-height: 1.6;
     }
 
     &__list {
-        margin-top: rem(56);
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(rem(240), 1fr));
-        gap: rem(30);
+        margin-top: clamp(rem(40), 5vw, rem(64));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: clamp(rem(20), 2.4vw, rem(30));
     }
 }
 
 .product-card {
+    flex: 1 1 rem(240);
+    min-width: rem(220);
+    max-width: rem(300);
+
     &__link {
         display: flex;
         flex-direction: column;
         height: 100%;
+        padding: rem(14);
         background-color: var(--color-light);
-        border-radius: rem(20);
+        border: rem(1) solid var(--border-soft);
+        border-radius: var(--radius);
         overflow: hidden;
         box-shadow: var(--shadow-warm);
-        transition-property: translate, box-shadow;
+        transition-property: translate, box-shadow, border-color;
         transition-duration: var(--transition-duration);
 
         @include hover {
             translate: 0 rem(-8);
-            box-shadow: 0 #{rem(22)} #{rem(50)} rgba(46, 42, 32, 0.18);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-accent);
             color: var(--color-dark);
         }
     }
 
+    // Фото в «паспарту» з тонкою рамкою
     &__image {
         width: 100%;
         aspect-ratio: 4 / 3;
         object-fit: cover;
+        border: rem(1) solid var(--border-soft);
+        border-radius: var(--radius-sm);
+        transition: scale var(--transition-smooth);
     }
 
     &__body {
@@ -59,13 +83,14 @@
         flex-direction: column;
         flex-grow: 1;
         row-gap: rem(10);
-        padding: rem(24);
+        padding: rem(18) rem(10) rem(8);
     }
 
     &__title {
         font-family: var(--font-family-accent);
         font-weight: 600;
-        font-size: rem(24);
+        font-size: rem(23);
+        line-height: 1.2;
         color: var(--color-dark);
     }
 
@@ -78,9 +103,10 @@
 
     &__more {
         display: inline-flex;
+        align-self: flex-start;
         align-items: center;
         column-gap: rem(8);
-        margin-top: rem(6);
+        margin-top: rem(10);
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.08em;
@@ -94,6 +120,10 @@
     }
 
     @include hover {
+        .product-card__image {
+            scale: 1.05;
+        }
+
         .product-card__more::after {
             translate: rem(6) 0;
         }

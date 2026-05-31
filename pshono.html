@@ -3,14 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
+    <script>try{if(localStorage.getItem('theme')!=='light')document.documentElement.classList.add('is-dark-theme')}catch(e){document.documentElement.classList.add('is-dark-theme')}</script>
     <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Greenline | Пшоно</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap">
     <link rel="stylesheet" href="./styles/main.css">
     <script src="./scripts/main.js" type="module"></script>
 </head>
@@ -30,7 +31,7 @@
                                 <a href="./pshono.html" class="header__menu-link button">Пшоно</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="./goroh.html" class="header__menu-link button">Перлова</a>
+                                <a href="./perlova.html" class="header__menu-link button">Перлова</a>
                             </li>
                             <li class="header__menu-item">
                                 <a href="./yachna.html" class="header__menu-link button">Ячна</a>
@@ -96,7 +97,7 @@
                             дотримуються безглютенової дієти та мають алергію на глютен.</p>
                     </div>
                 </div>
-                <img src="./images/pshono/1.jpg" alt="" class="section__image" width="384" height="384" loading="lazy">
+                <div class="section__image harvest" data-js-harvest="truck" aria-hidden="true"></div>
             </div>
         </section>
     </main>
@@ -110,7 +111,7 @@
                         <a href="./pshono.html" class="footer__menu-link">Пшоно</a>
                     </li>
                     <li class="footer__menu-item">
-                        <a href="./goroh.html" class="footer__menu-link">Перлова</a>
+                        <a href="./perlova.html" class="footer__menu-link">Перлова</a>
                     </li>
                     <li class="footer__menu-item">
                         <a href="./yachna.html" class="footer__menu-link">Ячна</a>

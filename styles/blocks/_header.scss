@@ -1,14 +1,38 @@
 @use '../helpers' as *;
 
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: rgba(250, 246, 238, 0.78);
+    border-bottom: rem(1) solid transparent;
+    transition-property: background-color, box-shadow, border-color;
+    transition-duration: var(--transition-duration);
+
+    // Блюр лише на десктопі/планшеті. На мобільному backdrop-filter робив
+    // .header контейнером для fixed-оверлея меню, і меню не розгорталось
+    // на весь екран. Тому на телефоні блюр вимкнено.
+    @include mobile-above {
+        backdrop-filter: blur(rem(14));
+    }
+
+    &.is-scrolled {
+        background-color: rgba(250, 246, 238, 0.92);
+        border-bottom-color: var(--border-soft);
+        box-shadow: var(--shadow-sm);
+    }
+
     &__body {
-        padding: rem(8) rem(15);
+        padding-inline: clamp(rem(16), 4vw, rem(40));
 
         &-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
             column-gap: 1rem;
+            min-height: var(--header-height);
         }
     }
 
@@ -20,7 +44,9 @@
         @include mobile {
             position: fixed;
             inset: 0;
-            background-color: var(--color-green);
+            background-color: var(--color-footer);
+            // Тёмный радиальный градиент — как фон головної сторінки (тёмна тема)
+            background-image: radial-gradient(135% 100% at 50% 0%, #2c2618 0%, #16130d 55%, #100d08 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -37,8 +63,24 @@
         }
     }
 
+    // Шар падаючого зерна всередині мобільного меню — поверх градієнта, під пунктами
+    &__grain {
+        display: none;
+
+        @include mobile {
+            display: block;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+    }
+
     &__menu {
         @include mobile {
+            position: relative;
+            z-index: 1;
             overflow-y: auto;
         }
         
@@ -53,26 +95,63 @@
 
             @include mobile {
                 flex-direction: column;
-                row-gap: 1rem;
+                row-gap: rem(8);
+                align-items: stretch;
             }
         }
 
         // Перевизначаємо стиль .button: у шапці посилання — це текстові пункти меню
         &-link {
-            padding: rem(8) rem(14);
-            font-weight: 500;
+            padding: rem(9) rem(16);
+            font-weight: 600;
             color: var(--color-dark);
             background-color: transparent;
-            border-radius: rem(8);
+            border-radius: rem(10);
 
             @include hover {
-                background-color: transparent;
-                color: var(--color-accent);
+                background-color: var(--color-cream-deep);
+                color: var(--color-accent-deep);
             }
 
             @include mobile {
-                color: var(--color-light);
-                font-size: rem(20);
+                display: flex;
+                width: 100%;
+                padding: rem(18) rem(24);
+                color: rgba(250, 246, 238, 0.85);
+                font-size: rem(18);
+                font-weight: 700;
+                letter-spacing: 0.025em;
+                background: rgba(44, 38, 24, 0.55);
+                border-radius: rem(14);
+                border: rem(1) solid rgba(184, 137, 59, 0.18);
+                position: relative;
+                overflow: hidden;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 15%;
+                    bottom: 15%;
+                    width: rem(3);
+                    background: linear-gradient(to bottom, var(--color-accent), #d8be7a);
+                    border-radius: 0 rem(2) rem(2) 0;
+                    opacity: 0;
+                    scale: 1 0.3;
+                    transition: opacity var(--transition-smooth), scale var(--transition-smooth);
+                }
+
+                @include hover {
+                    color: var(--color-light);
+                    background: rgba(184, 137, 59, 0.16);
+                    border-color: rgba(184, 137, 59, 0.5);
+                    translate: rem(4) 0;
+
+                    &::before {
+                        opacity: 1;
+                        scale: 1;
+                    }
+                }
             }
         }
     }
@@ -83,6 +162,8 @@
         column-gap: rem(12);
 
         @include mobile {
+            position: relative;
+            z-index: 1;
             justify-content: center;
             flex-direction: column-reverse;
             row-gap: rem(20);
@@ -93,16 +174,39 @@
     &__contacts-button {
         color: var(--color-light);
         background-color: var(--color-accent);
+        box-shadow: 0 rem(6) rem(16) rgba(184, 137, 59, 0.3);
+        transition-property: background-color, color, translate, box-shadow;
 
         @include hover {
             color: var(--color-light);
             background-color: var(--color-accent-deep);
+            translate: 0 rem(-2);
+            box-shadow: 0 rem(10) rem(22) rgba(184, 137, 59, 0.38);
         }
     }
 
     &__switch-theme {
-        max-width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: rem(44);
+        height: rem(44);
         border: none;
-        background-color: inherit;
+        border-radius: 50%;
+        background-color: transparent;
+
+        @include hover {
+            background-color: var(--color-cream-deep);
+        }
+
+        img {
+            transition: rotate var(--transition-duration);
+        }
+
+        @include hover {
+            img {
+                rotate: -20deg;
+            }
+        }
     }
 }

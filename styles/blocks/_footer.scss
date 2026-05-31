@@ -1,7 +1,8 @@
 @use '../helpers' as *;
 
 .footer {
-    background-color: var(--color-green);
+    background-image: linear-gradient(160deg, #322c20 0%, #241f17 100%);
+    border-top: rem(3) solid var(--color-accent);
     color: var(--color-light);
 
     &-inner {
@@ -9,12 +10,13 @@
         justify-content: space-between;
         align-items: center;
         column-gap: rem(40);
-        row-gap: rem(36);
-        padding-block: rem(56);
+        row-gap: rem(32);
+        padding-block: clamp(rem(40), 6vw, rem(64));
 
         @include tablet {
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
+            text-align: center;
         }
     }
 
@@ -22,21 +24,43 @@
         &-list {
             display: flex;
             flex-wrap: wrap;
-            column-gap: rem(28);
-            row-gap: rem(14);
+            justify-content: center;
+            column-gap: rem(32);
+            row-gap: rem(16);
 
             @include tablet {
                 flex-direction: column;
+                align-items: center;
             }
         }
 
         &-link {
+            position: relative;
             color: var(--color-light);
-            font-weight: 700;
+            font-weight: 600;
 
             @include hover {
                 color: var(--color-light);
-                text-decoration: underline;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: rem(-5);
+                height: rem(2);
+                background-color: var(--color-accent);
+                border-radius: rem(999);
+                scale: 0 1;
+                transform-origin: left;
+                transition: scale var(--transition-duration);
+            }
+
+            @include hover {
+                &::after {
+                    scale: 1 1;
+                }
             }
         }
     }

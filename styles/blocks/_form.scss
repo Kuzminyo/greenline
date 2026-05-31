@@ -17,17 +17,23 @@
     }
 
     &__control {
-        padding: 0.75rem;
+        padding: rem(13) rem(15);
         font-size: 1rem;
         color: var(--color-dark);
-        background-color: var(--color-cream);
-        border: 1px solid var(--border-soft);
-        border-radius: 0.5rem;
-        transition: border-color 0.2s;
+        background-color: var(--color-light);
+        border: rem(1) solid var(--border-soft);
+        border-radius: var(--radius-sm);
+        transition-property: border-color, box-shadow;
+        transition-duration: var(--transition-duration);
+
+        &::placeholder {
+            color: var(--color-gray);
+        }
 
         &:focus {
             border-color: var(--color-accent);
             outline: none;
+            box-shadow: 0 0 0 rem(3) rgba(184, 137, 59, 0.18);
         }
     }
 
